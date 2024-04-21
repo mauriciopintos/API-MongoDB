@@ -31,19 +31,19 @@ Remove-Item -Recurse -Force node_modules
 npm install
 
 4- Creación de la API con Mongoose
-Definición del Modelo: Definir el modelo para los tickets. Crea un archivo ticket.model.ts dentro de la carpeta src
+Definición del Modelo: Modelo para los tickets. Es un archivo ticket.model.ts dentro de la carpeta src
 
-5- Módulo de Tickets: Crea un módulo para manejar los tickets. Crea un archivo tickets.module.ts dentro de la carpeta src/tickets
+5- Módulo de Tickets: Módulo para manejar los tickets. Crea un archivo tickets.module.ts dentro de la carpeta src/tickets
 
-6- Controlador de Tickets: Crea un controlador para manejar las rutas relacionadas con los tickets. Crea un archivo tickets.controller.ts dentro de la carpeta src/tickets:
+6- Controlador de Tickets: Controlador para manejar las rutas relacionadas con los tickets. Crea un archivo tickets.controller.ts dentro de la carpeta src/tickets:
 
-7- Servicio de Tickets: Crea un servicio para manejar la lógica relacionada con los tickets. Crea un archivo tickets.service.ts dentro de la carpeta src/tickets
+7- Servicio de Tickets: Servicio para manejar la lógica relacionada con los tickets. Con un archivo tickets.service.ts dentro de la carpeta src/tickets
 
 ### Uso de la API
 
-1- Configuración de MongoDB: Asegúrate de tener MongoDB instalado localmente o configura las credenciales para una instancia remota. Puedes configurar la conexión en el archivo app.module.ts.
+1- Configuración de MongoDB: Tener MongoDB instalado localmente o configuradas las credenciales para una instancia remota. Configurar la conexión en el archivo ./src/config/mongo_config.json, tomar como modelo TEMPLATE-mongo_config.json.
 
-2- Definición de Rutas: Define las rutas en el controlador de tickets (tickets.controller.ts) utilizando los métodos HTTP necesarios (GET, POST, PUT, DELETE).
+2- Definición de Rutas: Definir las rutas en el controlador de tickets (tickets.controller.ts) utilizando los métodos HTTP necesarios (GET, POST, PUT, DELETE).
 
 3- Lanzamiento del Servidor: Ejecuta el servidor NestJS con el siguiente comando:
 npm run start
@@ -69,19 +69,33 @@ curl -X PUT -H "Content-Type: application/json" -d '{"title": "Concierto de Rock
 5- Eliminar un Ticket por su ID (DELETE)
 curl -X DELETE http://localhost:3000/tickets/{id}
 
-API-MongoDB/
-│
+api-mongo-db/
+├── node_modules/
 ├── src/
-│ ├── app.module.ts
-│ ├── main.ts
+│ ├── config/
 │ ├── controllers/
-│ ├── services/
-│ ├── modules/
-│ ├── middleware/
+│ ├── filters/
 │ ├── guards/
 │ ├── interceptors/
-│ ├── filters/
+│ ├── middleware/
+│ ├── modules/
+│ ├── schemas/
+│ ├── services/
+│ ├── app.controller.spec.ts
+│ ├── app.controller.ts
+│ ├── app.module.ts
+│ ├── app.service.ts
+│ ├── main.ts
+│ ├── ticket.model.ts
 │ └── ...
-├── node_modules/
+├── test/
+├── .eslintrc.js
+├── .gitignore
+├── .prettierrc
+├── package-lock.json
 ├── package.json
+├── README.md
+├── tsconfig.build.json
+├── tsconfig.json
+├── yarn.lock
 └── ...
