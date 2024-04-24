@@ -14,7 +14,7 @@ npm install -g yarn
 npm install -g @nestjs/cli
 ```
 
-##### 2- Creación del Proyecto:
+##### 2- Creación del Proyecto (omitir este paso al clonar):
 
 ```bash
 nest new api-mongo-db
@@ -56,38 +56,41 @@ Remove-Item -Recurse -Force node_modules
 npm install
 ```
 
-##### 4- Creación de la API con Mongoose
+##### 4- Creación de la API con Mongoose (omitir este paso al clonar):
 
 Definición del Modelo: Modelo para los tickets. Es un archivo ticket.model.ts dentro de la carpeta src
 
-##### 5- Módulo de Tickets:
+##### 5- Módulo de Tickets (omitir este paso al clonar):
 
-Módulo para manejar los tickets. Crea un archivo tickets.module.ts dentro de la carpeta src/tickets
+Módulo para manejar los modelos de tickets. Crea un archivo ticket.model.ts dentro de la carpeta src/
 
-##### 6- Controlador de Tickets:
+##### 6- Controlador de Tickets (omitir este paso al clonar):
 
-Controlador para manejar las rutas relacionadas con los tickets. Crea un archivo tickets.controller.ts dentro de la carpeta src/tickets:
-
-##### 7- Servicio de Tickets:
-
-Servicio para manejar la lógica relacionada con los tickets. Con un archivo tickets.service.ts dentro de la carpeta src/tickets
+Módulo para manejar los modelos de eventos. Crea un archivo event.model.ts dentro de la carpeta src/
 
 ### Uso de la API
 
 ##### 1- Configuración de MongoDB:
 
-Tener MongoDB instalado localmente o configuradas las credenciales para una instancia remota. Configurar la conexión en el archivo ./src/config/mongo_config.json, tomar como modelo TEMPLATE-mongo_config.json.
+Tener MongoDB instalado localmente o configuradas las credenciales para una instancia remota. Configurar la conexión en el archivo .env, tomar como modelo .TEMPLATE-env.
 
 ##### 2- Definición de Rutas:
 
-Definir las rutas en el controlador de tickets (tickets.controller.ts) utilizando los métodos HTTP necesarios (GET, POST, PUT, DELETE).
+Definir las rutas en el controlador de tickets utilizando los métodos HTTP necesarios (GET, POST, PUT, DELETE).
 
 ##### 3- Lanzamiento del Servidor:
 
 Ejecuta el servidor NestJS con el siguiente comando:
 
 ```bash
+yarn start
+```
+
+o bien...
+
+```bash
 npm run start
+
 ```
 
 ### Pruebas
@@ -131,8 +134,6 @@ curl -X DELETE http://localhost:3000/tickets/{id}
 ```bash
 api-mongo-db/
 ├── src/
-│   ├── config/
-│   │   └── mongo_config.json      // Archivo de configuracion JSON para mongo Atlas
 │   ├── controllers/
 │   │   ├── event.controller.ts    // Controlador para manejar eventos
 │   │   └── ticket.controller.ts   // Controlador para manejar tickets
@@ -147,7 +148,6 @@ api-mongo-db/
 │   │       ├── ticket.schema.ts   // Esquema Mongoose para tickets
 │   │       ├── ticket.service.ts  // Servicio para manejar operaciones de tickets
 │   │       └── ticket.module.ts   // Módulo de tickets
-│   ├── .env                       // Archivo de variables de entorno
 │   ├── app.controller.ts
 │   ├── app.module.ts              // Archivo ppal de configuración de la aplicación
 │   ├── app.service.ts
@@ -157,10 +157,18 @@ api-mongo-db/
 │   ├── main.ts
 │   ├── ticket.model.ts            // Modelo de datos de ticket
 │   └── ...
+├── test/
+├── .env                       // Archivo de variables de entorno
+├── .eslintrc.js
 ├── .gitignore
+├── .prettierrc
+├── .TEMPLATE-env
+├── nest-cli.json
 ├── package-lock.json
 ├── package.json
 ├── README.md
+├── tsconfig.build.json
 ├── tsconfig.json
+├── yarn.lock
 └── ...
 ```
