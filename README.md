@@ -58,7 +58,7 @@ npm install
 
 ##### 4- Creación de la API con Mongoose (omitir este paso al clonar):
 
-Definición del Modelo: Modelo para los tickets. Es un archivo ticket.model.ts dentro de la carpeta src
+Definición del Modelo: Modelo para los tickets. Es un archivo ticket.model.ts dentro de la carpeta src/
 
 ##### 5- Módulo de Tickets (omitir este paso al clonar):
 
@@ -131,44 +131,49 @@ curl -X DELETE http://localhost:3000/tickets/{id}
 
 ### Estructura de directorios y archivos
 
+    > DTO: "Data Transfer Object" (Objeto de Transferencia de Datos)    
+
 ```bash
 api-mongo-db/
 ├── src/
 │   ├── controllers/
-│   │   ├── event.controller.ts    // Controlador para manejar eventos
-│   │   └── ticket.controller.ts   // Controlador para manejar tickets
+│   │   ├── event.controller.ts         // Controlador para manejar eventos
+│   │   └── ticket.controller.ts        // Controlador para manejar tickets
 │   ├── modules/
-│   │   ├── event/                 // Módulo para eventos
-│   │   │   ├── dto/               // DTOs relacionados con eventos
-│   │   │   ├── event.schema.ts    // Esquema Mongoose para eventos
-│   │   │   ├── event.service.ts   // Servicio para manejar operaciones de eventos
-│   │   │   └── event.module.ts    // Módulo de eventos
-│   │   └── ticket/                // Módulo para tickets
-│   │       ├── dto/               // DTOs relacionados con tickets
-│   │       ├── ticket.schema.ts   // Esquema Mongoose para tickets
-│   │       ├── ticket.service.ts  // Servicio para manejar operaciones de tickets
-│   │       └── ticket.module.ts   // Módulo de tickets
-│   ├── app.controller.ts
-│   ├── app.module.ts              // Archivo ppal de configuración de la aplicación
-│   ├── app.service.ts
-│   ├── database.connection.ts     // Archivo para manejar la conexión a MongoDB
-│   ├── dotenv.config.ts           // Archivo para cargar variables de entorno
-│   ├── event.model.ts             // Modelo de datos de evento
-│   ├── main.ts
-│   ├── ticket.model.ts            // Modelo de datos de ticket
+│   │   ├── event/                      // Módulo para eventos
+│   │   │   ├── dto/                    // DTOs relacionados con eventos
+│   │   │   │   ├── create.event.dto.ts // DTO para crear un evento
+│   │   │   │   └── update.event.dto.ts // DTO para actualizar un evento
+│   │   │   ├── event.schema.ts         // Esquema Mongoose para eventos
+│   │   │   ├── event.service.ts        // Servicio para manejar ops. de eventos
+│   │   │   └── event.module.ts         // Módulo de eventos
+│   │   └── ticket/                     // Módulo para tickets
+│   │       ├── dto/                    // DTOs relacionados con tickets
+│   │       │   ├── create.ticket.dto.ts// DTO para crear un ticket
+│   │       │   └── update.ticket.dto.ts// DTO para actualizar un ticket
+│   │       ├── ticket.schema.ts        // Esquema Mongoose para tickets
+│   │       ├── ticket.service.ts       // Servicio para manejar ops. de tickets
+│   │       └── ticket.module.ts        // Módulo de tickets
+│   ├── app.controller.spec.ts          // Par pruebas unit. del controlador principal
+│   ├── app.controller.ts               // Controlador principal de la aplicación
+│   ├── app.module.ts                   // Arch. ppal de config. de la aplicación
+│   ├── app.service.ts                  // Servicio principal de la aplicación
+│   ├── database.connection.ts          // Archivo para manejar la conexión a MongoDB
+│   ├── dotenv.config.ts                // Archivo para cargar variables de entorno
+│   ├── main.ts                         // Archivo principal de la aplicación
 │   └── ...
-├── test/
-├── .env                       // Archivo de variables de entorno
-├── .eslintrc.js
-├── .gitignore
-├── .prettierrc
-├── .TEMPLATE-env
-├── nest-cli.json
-├── package-lock.json
-├── package.json
-├── README.md
-├── tsconfig.build.json
-├── tsconfig.json
-├── yarn.lock
+├── test/                                // Carpeta para pruebas
+├── .env                                 // Archivo de variables de entorno
+├── .eslintrc.js                         // Configuración de ESLint
+├── .gitignore   
+├── .prettierrc                          // Configuración de Prettier
+├── .TEMPLATE-env                        // Archivo de plantilla para var. de entorno
+├── nest-cli.json                        // Configuración de Nest CLI
+├── package-lock.json                    // Archivo de bloqueo de dependencias de npm
+├── package.json                         // Archivo de configuración de npm
+├── README.md                            // Archivo de documentación
+├── tsconfig.build.json                  // Config. de TS para compilar el proyecto
+├── tsconfig.json                        // Config. de TS
+├── yarn.lock                            // Archivo de bloqueo de dependencias de Yarn
 └── ...
 ```

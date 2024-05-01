@@ -1,9 +1,44 @@
-import { Controller } from '@nestjs/common';
+//event.controller.ts
+/* eslint-disable prettier/prettier */
+
+import { Controller, Get, Post, Patch, Delete, Param, Body, /*UseGuards,*/ } from '@nestjs/common';
 import { EventService } from '../modules/event/event.service';
+import { CreateEventDto } from '../modules/event/dto/create-event.dto';
+import { UpdateEventDto } from '../modules/event/dto/update-event.dto';
+// import { AdminGuard } from '../../guards/admin.guard'; // Importar el guardia
+
+// definir como tomar el user_role segun el usuario
+const user_role = 'admin'
 
 @Controller('event')
 export class EventController {
-  constructor(private readonly eventService: EventService) {}
+  constructor(private readonly eventService: EventService) { }
 
-  // Definir rutas y métodos del controlador para manejar operaciones relacionadas con eventos
+  @Get()
+  async findAll() {
+    return this.eventService.findAll(user_role);
+  }
+
+  @Get(':id')
+  async findById(@Param('id') id: string) {
+    return this.eventService.findById(id, user_role);
+  }
+
+  @Post()
+  // @UseGuards(AdminGuard) // Utiliza un guardia para verificar el rol de administrador
+  async create(@Body() createEventDto: CreateEventDto) {
+    return this.eventService.create(createEventDto, user_role);
+  }
+
+  @Patch(':id')
+  // @UseGuards(AdminGuard) // Utiliza un guardia para verificar el rol de administrador
+  async update(@Param('id') id: string, @Body() updateEventDto: UpdateEventDto) {
+    return this.eventService.update(id, updateEventDto, user_role);
+  }
+
+  @Delete(':id')
+  // @UseGuards(AdminGuard) // Utiliza un guardia para verificar el rol de administrador
+  async delete(@Param('id') id: string) {
+    return this.eventService.delete(id, user_role);
+  }
 }

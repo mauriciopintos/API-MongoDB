@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+// ticket.module.ts
+
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TicketController } from '../../controllers/ticket.controller';
@@ -11,4 +14,4 @@ import { Ticket, TicketSchema } from './ticket.schema';
   controllers: [TicketController],
   providers: [TicketService],
 })
-export class TicketModule {}
+export class TicketModule { }
