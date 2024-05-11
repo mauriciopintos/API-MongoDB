@@ -14,21 +14,21 @@ export class EventService {
 
   async create(eventDto: CreateEventDto, userRole: string): Promise<Event> {
     if (userRole !== 'admin') {
-      throw new ForbiddenException('Only admins can create events');
+      throw new ForbiddenException('Solo los administradores pueden crear los eventos');
     }
     const createdEvent = new this.eventModel(eventDto);
     return createdEvent.save();
   }
 
   async findAll(userRole: string): Promise<Event[]> {
-    if (userRole !== 'user') {
+    if (userRole !== 'user' && userRole !== 'admin') {
       throw new ForbiddenException('Solo los usuarios pueden ver los eventos');
     }
     return this.eventModel.find().exec();
   }
 
   async findById(id: string, userRole: string): Promise<Event> {
-    if (userRole !== 'user') {
+    if (userRole !== 'user' && userRole !== 'admin') {
       throw new ForbiddenException('Solo los usuarios pueden ver los eventos');
     }
     const event = await this.eventModel.findById(id).exec();

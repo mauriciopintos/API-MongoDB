@@ -90,7 +90,6 @@ o bien...
 
 ```bash
 npm run start
-
 ```
 
 ### Pruebas
@@ -99,6 +98,63 @@ Utilizar herramientas como Postman o cURL para probar las rutas de la API. Se pu
 
 #### Ejemplos CURL
 
+#### EVENTOS
+
+##### CREAR EVENTOS
+
+```bash
+curl -X POST http://127.0.0.1:3000/event -H "Content-Type: application/json" -d "{\"imagen_evento\": \"https://example.com/image2.jpg\", \"ubicacion\": \"34.0522° N, 118.2437° W\", \"establecimiento\": \"Estadio\", \"direccion\": \"456 Calle Secundaria, Ciudad\", \"horario\": 7, \"franja\": \"pm\", \"fecha\": \"20/06/2024\", \"sector\": [\"Zona VIP\", \"Zona General\"], \"stock_tickets\": 500, \"descripcion\": \"Concierto de música\"}"
+```
+
+```bash
+curl -X POST http://127.0.0.1:3000/event -H "Content-Type: application/json" -d "{\"imagen_evento\": \"https://example.com/image3.jpg\", \"ubicacion\": \"51.5074° N, 0.1278° W\", \"establecimiento\": \"Teatro Municipal\", \"direccion\": \"789 Calle Secundaria, Ciudad\", \"horario\": 3, \"franja\": \"pm\", \"fecha\": \"10/07/2024\", \"sector\": [\"Platea\", \"Palco\"], \"stock_tickets\": 300, \"descripcion\": \"Obra de teatro\"}"
+```
+
+```bash
+curl -X POST http://127.0.0.1:3000/event -H "Content-Type: application/json" -d "{\"imagen_evento\": \"https://example.com/image4.jpg\", \"ubicacion\": \"52.5200° N, 13.4050° E\", \"establecimiento\": \"Museo de Arte\", \"direccion\": \"101 Calle Artística, Ciudad\", \"horario\": 11, \"franja\": \"am\", \"fecha\": \"05/08/2024\", \"sector\": [\"Sala 1\", \"Sala 2\"], \"stock_tickets\": 150, \"descripcion\": \"Exposición de arte moderno\"}"
+```
+
+```bash
+curl -X POST http://127.0.0.1:3000/event -H "Content-Type: application/json" -d "{\"imagen_evento\": \"https://example.com/image5.jpg\", \"ubicacion\": \"48.8566° N, 2.3522° E\", \"establecimiento\": \"Restaurante\", \"direccion\": \"202 Calle Gastronómica, Ciudad\", \"horario\": 8, \"franja\": \"pm\", \"fecha\": \"25/09/2024\", \"sector\": [\"Salón Principal\", \"Terraza\"], \"stock_tickets\": 100, \"descripcion\": \"Cena de gala\"}"
+
+```
+
+```bash
+curl -X POST http://127.0.0.1:3000/event -H "Content-Type: application/json" -d "{\"imagen_evento\": \"https://example.com/image6.jpg\", \"ubicacion\": \"Calle falsa, 1234\", \"establecimiento\": \"Centro de ornitologia\", \"direccion\": \"Calle falsa, 1234, Ciudad Metro\", \"horario\": 11, \"franja\": \"am\", \"fecha\": \"15/03/2025\", \"sector\": [\"Auditorio central\", \"Palco\"], \"stock_tickets\": 400, \"descripcion\": \"Parvada de pajaros\"}"
+
+```
+
+```bash
+curl -X POST http://127.0.0.1:3000/event -H "Content-Type: application/json" -d "{\"imagen_evento\": \"https://example.com/image7.jpg\", \"ubicacion\": \"34.0178° N, 0.3578° E\", \"establecimiento\": \"Micro estadio del campo\", \"direccion\": \"Cañada Vargas, Ciudad Rural\", \"horario\": 8, \"franja\": \"am\", \"fecha\": \"12/07/2024\", \"sector\": [\"Platea este\", \"Popular\"], \"stock_tickets\": 3200, \"descripcion\": \"Fiesta regional\"}"
+```
+
+```bash
+curl -X POST http://127.0.0.1:3000/event -H "Content-Type: application/json" -d "{\"imagen_evento\": \"BORRAME POR FEO\", \"ubicacion\": \"34.0178° N, 0.3578° E\", \"establecimiento\": \"Micro estadio del campo\", \"direccion\": \"Cañada Vargas, Ciudad Rural\", \"horario\": 8, \"franja\": \"am\", \"fecha\": \"12/07/2024\", \"sector\": [\"Platea este\", \"Popular\"], \"stock_tickets\": 3200, \"descripcion\": \"Fiesta regional\"}"
+```
+
+
+##### CONSULTAR EVENTOS
+```bash
+curl -X GET http://127.0.0.1:3000/event
+```
+
+##### CONSULTAR EVENTOS POR ID
+```bash
+curl -X GET http://127.0.0.1:3000/event/6632c1df56cb543739959099
+```
+
+##### ACTUALIZAR PARCIALMENTE UN EVENTOS POR ID
+```bash
+curl -X PATCH http://127.0.0.1:3000/event/6632c1df56cb543739959099 -H "Content-Type: application/json" -d "{\"establecimiento\": \"EVENTO ACTUALIZADO\", \"descripcion\": \"EVENTO RE COPADO\"}"
+```
+
+##### ELIMINAR EVENTOS POR ID
+```bash
+curl -X DELETE http://127.0.0.1:3000/event/663ff7467218f1990bbe5e1d
+```
+
+
+#### TICKETS
 ##### 1- Crear un Ticket (POST)
 
 ```bash
@@ -154,10 +210,7 @@ api-mongo-db/
 │   │       ├── ticket.schema.ts        // Esquema Mongoose para tickets
 │   │       ├── ticket.service.ts       // Servicio para manejar ops. de tickets
 │   │       └── ticket.module.ts        // Módulo de tickets
-│   ├── app.controller.spec.ts          // Par pruebas unit. del controlador principal
-│   ├── app.controller.ts               // Controlador principal de la aplicación
 │   ├── app.module.ts                   // Arch. ppal de config. de la aplicación
-│   ├── app.service.ts                  // Servicio principal de la aplicación
 │   ├── database.connection.ts          // Archivo para manejar la conexión a MongoDB
 │   ├── dotenv.config.ts                // Archivo para cargar variables de entorno
 │   ├── main.ts                         // Archivo principal de la aplicación
